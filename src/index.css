@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-50;
+}
+
+/* Print Styles */
+@media print {
+  /* Hide non-essential elements */
+  nav,
+  aside,
+  button,
+  .no-print,
+  [data-no-print],
+  header > div > div:last-child /* Edit/Delete buttons */ {
+    display: none !important;
+  }
+
+  /* Reset background and ensure content fills page */
+  body {
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Main content adjustments */
+  main,
+  .p-6 {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Show sidebar content inline for print */
+  .grid {
+    display: block !important;
+  }
+
+  /* Cards and sections */
+  .bg-white,
+  .rounded-lg,
+  .shadow-sm {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+    margin-bottom: 1rem !important;
+    break-inside: avoid;
+  }
+
+  /* Ensure colors print */
+  .bg-blue-600,
+  .bg-red-500,
+  .bg-green-500,
+  .bg-yellow-500 {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* FedRAMP metrics bar */
+  .bg-gradient-to-r {
+    background: #1e40af !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Timeline styling */
+  .border-l-2 {
+    border-left-width: 2px !important;
+    border-left-color: #d1d5db !important;
+  }
+
+  /* Severity badges */
+  .bg-red-100,
+  .bg-orange-100,
+  .bg-yellow-100,
+  .bg-green-100,
+  .bg-blue-100 {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Page breaks */
+  h2, h3, h4 {
+    break-after: avoid;
+  }
+
+  .space-y-6 > div {
+    break-inside: avoid;
+  }
+
+  /* Print header */
+  .print-header {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #1e40af;
+  }
+
+  .print-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e40af;
+  }
+
+  .print-header p {
+    color: #6b7280;
+    font-size: 12px;
+  }
+
+  /* Footer */
+  @page {
+    margin: 1in;
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+    }
+  }
+
+  /* Code blocks */
+  pre {
+    background: #f3f4f6 !important;
+    color: #1f2937 !important;
+    border: 1px solid #d1d5db !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Links */
+  a {
+    color: #1e40af !important;
+    text-decoration: underline !important;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid #d1d5db;
+    padding: 0.5rem;
+    text-align: left;
+  }
+
+  th {
+    background: #f3f4f6 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* Screen-only styles */
+@media screen {
+  .print-header {
+    display: none;
+  }
+}
